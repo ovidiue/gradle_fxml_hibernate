@@ -93,7 +93,26 @@ public class Main extends Application implements Initializable {
         HelperUi.displayErrorColors(PseudoClass.getPseudoClass("error"), name, surname);
     }
 
-    public void viewAllEntries() {
+    public void viewAllEntries() throws Exception {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("views/listing.fxml"));
+        Parent root = loader.load();
 
+        Scene scene = new Scene(root, 600, 400);
+        scene.getStylesheets().add("css/main_css.css");
+
+        Stage primaryStage = new Stage();
+        primaryStage.setTitle("Listing entries");
+        primaryStage.setScene(scene);
+
+        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                System.exit(1);
+            }
+        });
+
+
+        primaryStage.show();
     }
 }

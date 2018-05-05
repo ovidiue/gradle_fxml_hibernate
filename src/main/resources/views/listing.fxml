@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="Listing">
+<AnchorPane fx:id="listing_stage" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="Listing">
     <children>
         <Text layoutX="121.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All Entries in Database"
               textAlignment="CENTER" wrappingWidth="358.6708984375" AnchorPane.bottomAnchor="335.2197265625"
@@ -25,7 +24,7 @@
                 <TableColumn prefWidth="75.0" text="C2"/>
             </columns>
         </TableView>
-        <Button layoutX="501.0" layoutY="355.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="88.0" text="Back"
-                AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="10.0"/>
+        <Button layoutX="501.0" layoutY="355.0" mnemonicParsing="false" onAction="#closeListing" prefHeight="31.0"
+                prefWidth="88.0" text="Back" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="10.0"/>
     </children>
 </AnchorPane>
