@@ -3,6 +3,7 @@ import javafx.css.PseudoClass;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -10,10 +11,13 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 /**
  * Created by Ovidiu on 16-Apr-18.
  */
-public class Main extends Application {
+public class Main extends Application implements Initializable {
 
     @FXML
     TextField name;
@@ -21,9 +25,7 @@ public class Main extends Application {
     TextField surname;
 
     public static void main(String[] args) {
-
         Application.launch(args);
-
     }
 
     @Override
@@ -45,6 +47,7 @@ public class Main extends Application {
             }
         });
 
+
         primaryStage.show();
     }
 
@@ -59,32 +62,35 @@ public class Main extends Application {
             return;
         }
         HibernateHelper.save(c);
-        cleanFields();
+        cleanFieldsValues();
         System.out.println("Successfully inserted: " + c.name + " " + c.surname);
     }
 
-    protected Contact getContactInfo() {
+    private Contact getContactInfo() {
         System.out.println(name.getText());
         System.out.println(surname.getText());
         return new Contact(name.getText(), surname.getText());
     }
 
-    protected void cleanFields() {
+    private void cleanFieldsValues() {
         name.setText("");
         surname.setText("");
     }
 
-    protected boolean validateContact(Contact c) {
+    private boolean validateContact(Contact c) {
         return (c.name.trim().length() != 0 && c.surname.trim().length() != 0);
     }
 
     private void displayErrorIfNecessary(Contact c) {
-        PseudoClass error = PseudoClass.getPseudoClass("error");
-       name.pseudoClassStateChanged(error, false);
-       surname.pseudoClassStateChanged(error, false);
         if (!validateContact(c)) {
-            name.pseudoClassStateChanged(error, true);
-            surname.pseudoClassStateChanged(error, true);
+            name.pseudoClassStateChanged(HelperUi.ERROR, true);
+            surname.pseudoClassStateChanged(HelperUi.ERROR, true);
         }
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        HelperUi.displayErrorColors(PseudoClass.getPseudoClass("error"), name, surname);
+
     }
 }
