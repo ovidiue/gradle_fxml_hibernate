@@ -1,10 +1,12 @@
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 /**
  * Created by Ovidiu on 16-Apr-18.
@@ -16,6 +18,12 @@ public class Main extends Application {
     @FXML
     TextField surname;
 
+    public static void main(String[] args) {
+
+        Application.launch(args);
+
+    }
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader loader = new FXMLLoader();
@@ -23,23 +31,26 @@ public class Main extends Application {
         Parent root = loader.load();
 
         Scene scene = new Scene(root, 600, 400);
+        scene.getStylesheets().add("css/main_css.css");
 
         primaryStage.setTitle("FXML Welcome");
         primaryStage.setScene(scene);
+
+        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                System.exit(1);
+            }
+        });
+
         primaryStage.show();
-    }
-
-    public static void main(String[] args) {
-
-      Application.launch(args);
-
     }
 
     public void test_click() {
         Contact c = getContactInfo();
         HibernateHelper.save(c);
         cleanFields();
-        System.out.println("Successfully inserted: "+c.name+" "+c.surname);
+        System.out.println("Successfully inserted: " + c.name + " " + c.surname);
     }
 
     protected Contact getContactInfo() {
