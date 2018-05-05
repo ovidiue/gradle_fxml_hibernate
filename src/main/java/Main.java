@@ -91,6 +91,9 @@ public class Main extends Application implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         HelperUi.displayErrorColors(PseudoClass.getPseudoClass("error"), name, surname);
+    }
+
+    public void viewAllEntries() {
 
     }
 }
