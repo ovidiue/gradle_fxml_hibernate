@@ -1,4 +1,5 @@
 import javafx.application.Application;
+import javafx.css.PseudoClass;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -50,6 +51,7 @@ public class Main extends Application {
     public void test_click() {
         Contact c = getContactInfo();
         if (!validateContact(c)) {
+            displayErrorIfNecessary(c);
             HelperUi.buildAlert(Alert.AlertType.WARNING,
                     "Warning",
                     "Empty fields",
@@ -74,5 +76,15 @@ public class Main extends Application {
 
     protected boolean validateContact(Contact c) {
         return (c.name.trim().length() != 0 && c.surname.trim().length() != 0);
+    }
+
+    private void displayErrorIfNecessary(Contact c) {
+        PseudoClass error = PseudoClass.getPseudoClass("error");
+       name.pseudoClassStateChanged(error, false);
+       surname.pseudoClassStateChanged(error, false);
+        if (!validateContact(c)) {
+            name.pseudoClassStateChanged(error, true);
+            surname.pseudoClassStateChanged(error, true);
+        }
     }
 }

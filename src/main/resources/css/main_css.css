@@ -3,3 +3,19 @@
     -fx-background-color: green;
     -fx-border-color: black;
 }
+
+.text-field:error {
+    -fx-border-color: red;
+    -fx-focus-color: red;
+    -fx-background-color: #ff5915;
+}
+
+.text-field:focused {
+    -fx-background-color: white;
+    -fx-border-color: white;
+}
+
+.text-field {
+    -fx-border-radius: 5px;
+    -fx-border-color: white;
+}
