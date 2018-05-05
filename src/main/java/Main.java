@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -48,6 +49,13 @@ public class Main extends Application {
 
     public void test_click() {
         Contact c = getContactInfo();
+        if (!validateContact(c)) {
+            HelperUi.buildAlert(Alert.AlertType.WARNING,
+                    "Warning",
+                    "Empty fields",
+                    "Please enter values for all fields");
+            return;
+        }
         HibernateHelper.save(c);
         cleanFields();
         System.out.println("Successfully inserted: " + c.name + " " + c.surname);
@@ -56,12 +64,15 @@ public class Main extends Application {
     protected Contact getContactInfo() {
         System.out.println(name.getText());
         System.out.println(surname.getText());
-        Contact c = new Contact(name.getText(), surname.getText());
-        return c;
+        return new Contact(name.getText(), surname.getText());
     }
 
     protected void cleanFields() {
         name.setText("");
         surname.setText("");
+    }
+
+    protected boolean validateContact(Contact c) {
+        return (c.name.trim().length() != 0 && c.surname.trim().length() != 0);
     }
 }
