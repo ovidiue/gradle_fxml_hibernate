@@ -17,4 +17,7 @@ public class Contact {
         this.name = name;
         this.surname = surname;
     }
+
+    public Contact() {
+    }
 }

@@ -1,6 +1,10 @@
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -22,11 +26,28 @@ public class Listing implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        TableColumn<Contact, String> firstNameCol = new TableColumn<Contact, String>("First Name");
 
+        TableColumn<Contact, String> lastNameCol = new TableColumn<Contact, String>("Last Name");
+
+        firstNameCol.setCellValueFactory(new PropertyValueFactory<>("userName"));
+        lastNameCol.setCellValueFactory(new PropertyValueFactory<>("email"));
+
+        ObservableList<Contact> list = getUserList();
+        for (Contact c: list)
+            System.out.println(c.name+" "+c.surname);
+        table.setItems(list);
+
+        table.getColumns().addAll(firstNameCol, lastNameCol);
     }
 
     public void closeListing() {
         stage = (Stage) listing_stage.getScene().getWindow();
         stage.close();
+    }
+
+    private ObservableList<Contact> getUserList() {
+        ObservableList<Contact> list = FXCollections.observableArrayList(HibernateHelper.fetchAllContacts());
+        return list;
     }
 }
