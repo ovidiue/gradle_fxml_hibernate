@@ -10,6 +10,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import model.Contact;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -63,7 +64,7 @@ public class Main extends Application implements Initializable {
         }
         HibernateHelper.save(c);
         cleanFieldsValues();
-        System.out.println("Successfully inserted: " + c.name + " " + c.surname);
+        System.out.println("Successfully inserted: " + c.getName() + " " + c.getSurname());
     }
 
     private Contact getContactInfo() {
@@ -78,7 +79,7 @@ public class Main extends Application implements Initializable {
     }
 
     private boolean validateContact(Contact c) {
-        return (c.name.trim().length() != 0 && c.surname.trim().length() != 0);
+        return (c.getName().trim().length() != 0 && c.getSurname().trim().length() != 0);
     }
 
     private void displayErrorIfNecessary(Contact c) {
