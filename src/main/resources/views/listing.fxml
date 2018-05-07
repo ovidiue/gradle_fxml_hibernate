@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
@@ -13,12 +13,8 @@
                 <Font size="31.0" />
             </font>
         </Text>
-        <TableView fx:id="table" layoutX="200.0" layoutY="92.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="100.0">
-            <columns>
-                <TableColumn prefWidth="75.0" text="First Name" />
-                <TableColumn prefWidth="75.0" text="Last Name" />
-            </columns>
-        </TableView>
+        <TableView fx:id="table" layoutX="200.0" layoutY="92.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="100.0" />
         <Button layoutX="501.0" layoutY="355.0" mnemonicParsing="false" onAction="#closeListing" prefHeight="31.0" prefWidth="88.0" text="Back" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="10.0" />
+      <ProgressIndicator fx:id="loader" layoutX="282.0" layoutY="120.0" prefHeight="221.0" prefWidth="600.0" AnchorPane.bottomAnchor="59.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="120.0" />
     </children>
 </AnchorPane>

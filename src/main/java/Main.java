@@ -114,5 +114,7 @@ public class Main extends Application implements Initializable {
 
 
         primaryStage.show();
+
+
     }
 }
