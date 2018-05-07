@@ -1,4 +1,3 @@
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -32,21 +31,34 @@ public class Listing implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         TableColumn<Contact, String> firstNameCol = new TableColumn<>("First Name");
-
         TableColumn<Contact, String> lastNameCol = new TableColumn<>("Last Name");
 
         firstNameCol.setCellValueFactory(new PropertyValueFactory<Contact, String>("name"));
         lastNameCol.setCellValueFactory(new PropertyValueFactory<>("surname"));
 
+        table.getColumns().addAll(firstNameCol, lastNameCol);
 
         loader.setProgress(-1d);
 
-        Platform.runLater(new Runnable() {
+       /* Platform.runLater(new Runnable() {
             @Override
             public void run() {
                 ObservableList<Contact> list = getUserList();
-                for (Contact c: list)
-                    System.out.println(c.name+" "+c.surname);
+                for (Contact c : list)
+                    System.out.println(c.name + " " + c.surname);
+
+                table.setItems(list);
+
+                loader.setVisible(false);
+            }
+        });*/
+
+        Thread th = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                ObservableList<Contact> list = getUserList();
+                for (Contact c : list)
+                    System.out.println(c.name + " " + c.surname);
 
                 table.setItems(list);
 
@@ -54,7 +66,7 @@ public class Listing implements Initializable {
             }
         });
 
-        table.getColumns().addAll(firstNameCol, lastNameCol);
+        th.start();
     }
 
     public void closeListing() {
