@@ -1,0 +1,4 @@
+#table, .column-header-background .label, .column-header, .column-header-background {
+    -fx-background-color: linear-gradient(rgb(0, 0, 0, 0.7), gray);
+}
+

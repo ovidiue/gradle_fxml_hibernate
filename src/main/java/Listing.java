@@ -39,6 +39,8 @@ public class Listing implements Initializable {
 
         table.getColumns().addAll(firstNameCol, lastNameCol);
 
+        HelperUi.applyClass(table, "css/loading_table.css", true);
+
         loader.setProgress(-1d);
 
         Thread th = new Thread(new Runnable() {
@@ -51,6 +53,7 @@ public class Listing implements Initializable {
                 table.setItems(list);
 
                 loader.setVisible(false);
+                HelperUi.applyClass(table, "css/loading_table.css", false);
             }
         });
 

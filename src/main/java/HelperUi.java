@@ -30,4 +30,12 @@ public class HelperUi {
             });
         }
     }
+
+    public static void applyClass(Control element, String cssClass, Boolean apply) {
+        if (apply) {
+            element.getStylesheets().add(cssClass);
+        } else {
+            element.getStylesheets().removeAll(cssClass);
+        }
+    }
 }
