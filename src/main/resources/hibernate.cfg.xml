@@ -14,6 +14,6 @@
         <property name="show_sql">true</property>
 
         <!--Names the annotated entity classes-->
-        <mapping class="Contact"/>
+        <mapping class="model.Contact"/>
     </session-factory>
 </hibernate-configuration>

@@ -8,6 +8,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import model.Contact;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -40,25 +41,12 @@ public class Listing implements Initializable {
 
         loader.setProgress(-1d);
 
-       /* Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                ObservableList<Contact> list = getUserList();
-                for (Contact c : list)
-                    System.out.println(c.name + " " + c.surname);
-
-                table.setItems(list);
-
-                loader.setVisible(false);
-            }
-        });*/
-
         Thread th = new Thread(new Runnable() {
             @Override
             public void run() {
                 ObservableList<Contact> list = getUserList();
                 for (Contact c : list)
-                    System.out.println(c.name + " " + c.surname);
+                    System.out.println(c.getName() + " " + c.getSurname());
 
                 table.setItems(list);
 
@@ -76,10 +64,6 @@ public class Listing implements Initializable {
 
     private ObservableList<Contact> getUserList() {
         ObservableList<Contact> list = FXCollections.observableArrayList(HibernateHelper.fetchAllContacts());
-      /*  ArrayList<Contact> a = new ArrayList<>();
-        a.add(new Contact("Ovidiu", "Enescu"));
-        ObservableList<Contact> list = FXCollections.observableArrayList(a);*/
-
         return list;
     }
 }
