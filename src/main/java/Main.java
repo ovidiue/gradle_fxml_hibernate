@@ -33,7 +33,7 @@ public class Main extends Application implements Initializable {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        locale = new Locale("ro");
+        locale = new Locale("");
         FXMLLoader loader = new FXMLLoader();
         loader.setResources(ResourceBundle.getBundle("LabelsBundle", locale));
         loader.setLocation(getClass().getResource("views/main_screen.fxml"));
