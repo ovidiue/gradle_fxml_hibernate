@@ -13,13 +13,15 @@ import javafx.stage.WindowEvent;
 import model.Contact;
 
 import java.net.URL;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 /**
  * Created by Ovidiu on 16-Apr-18.
  */
 public class Main extends Application implements Initializable {
-
+    private ResourceBundle resourceBundle;
+    public Locale locale;
     @FXML
     TextField name;
     @FXML
@@ -31,7 +33,9 @@ public class Main extends Application implements Initializable {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        locale = new Locale("ro");
         FXMLLoader loader = new FXMLLoader();
+        loader.setResources(ResourceBundle.getBundle("LabelsBundle", locale));
         loader.setLocation(getClass().getResource("views/main_screen.fxml"));
         Parent root = loader.load();
 
@@ -91,6 +95,7 @@ public class Main extends Application implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        resourceBundle = resources;
         HelperUi.displayErrorColors(PseudoClass.getPseudoClass("error"), name, surname);
     }
 

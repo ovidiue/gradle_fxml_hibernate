@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Text?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main">
    <children>
-      <Text layoutX="114.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TITLE OF THE MAIN PAGE" wrappingWidth="371.833984375">
+      <Text layoutX="114.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%main_page_title" wrappingWidth="371.833984375">
          <font>
             <Font name="Lucida Sans Demibold" size="27.0" />
          </font>
@@ -23,11 +23,11 @@
         </rowConstraints>
          <children>
             <TextField fx:id="name" GridPane.columnIndex="1" />
-            <Label text="NAME:" GridPane.halignment="LEFT" />
+            <Label text="%name" GridPane.halignment="LEFT" />
             <TextField fx:id="surname" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label text="SURNAME:" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
-            <Button fx:id="btn_save" contentDisplay="TOP" mnemonicParsing="false" onAction="#test_click" text="Save" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" onAction="#viewAllEntries" text="View all entries" GridPane.rowIndex="2" />
+            <Label text="%surname" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
+            <Button fx:id="btn_save" contentDisplay="TOP" mnemonicParsing="false" onAction="#test_click" text="%save" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+            <Button mnemonicParsing="false" onAction="#viewAllEntries" text="%view_all_entries" GridPane.rowIndex="2" />
          </children>
       </GridPane>
    </children>
