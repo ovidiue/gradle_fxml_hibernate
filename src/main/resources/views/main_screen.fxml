@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main">
+<AnchorPane fx:id="pane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main">
    <children>
       <Text layoutX="114.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TITLE OF THE MAIN PAGE" wrappingWidth="371.833984375">
          <font>
@@ -22,12 +24,12 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField fx:id="name" GridPane.columnIndex="1" />
             <Label text="NAME:" GridPane.halignment="LEFT" />
-            <TextField fx:id="surname" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label text="SURNAME:" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
-            <Button fx:id="btn_save" contentDisplay="TOP" mnemonicParsing="false" onAction="#test_click" text="Save" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" onAction="#viewAllEntries" text="View all entries" GridPane.rowIndex="2" />
+            <JFXButton onAction="#viewAllEntries" text="View all entries" GridPane.rowIndex="2" />
+            <JFXButton fx:id="btn_save" onAction="#saveContact" text="Save" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+            <JFXTextField fx:id="name" GridPane.columnIndex="1" />
+            <JFXTextField fx:id="surname" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
    </children>

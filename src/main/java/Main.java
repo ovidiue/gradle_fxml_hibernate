@@ -1,3 +1,6 @@
+import com.jfoenix.controls.JFXDialog;
+import com.jfoenix.controls.JFXSnackbar;
+import com.jfoenix.controls.JFXTextField;
 import javafx.application.Application;
 import javafx.css.PseudoClass;
 import javafx.event.EventHandler;
@@ -7,7 +10,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.Contact;
@@ -21,9 +26,11 @@ import java.util.ResourceBundle;
 public class Main extends Application implements Initializable {
 
     @FXML
-    TextField name;
+    JFXTextField name;
     @FXML
-    TextField surname;
+    JFXTextField surname;
+    @FXML
+    AnchorPane pane;
 
     public static void main(String[] args) {
         Application.launch(args);
@@ -36,7 +43,7 @@ public class Main extends Application implements Initializable {
         Parent root = loader.load();
 
         Scene scene = new Scene(root, 600, 400);
-        scene.getStylesheets().add("css/main_css.css");
+       // scene.getStylesheets().add("css/main_css.css");
 
         primaryStage.setTitle("FXML Welcome");
         primaryStage.setScene(scene);
@@ -49,10 +56,12 @@ public class Main extends Application implements Initializable {
         });
 
 
+
+
         primaryStage.show();
     }
 
-    public void test_click() {
+    public void saveContact() {
         Contact c = getContactInfo();
         if (!validateContact(c)) {
             displayErrorIfNecessary(c);
@@ -64,7 +73,15 @@ public class Main extends Application implements Initializable {
         }
         HibernateHelper.save(c);
         cleanFieldsValues();
-        System.out.println("Successfully inserted: " + c.getName() + " " + c.getSurname());
+        System.out.println("Successfully inserted: " + c.toString());
+        JFXSnackbar bar = new JFXSnackbar(pane); bar.show("TEST", 2000);
+        bar.enqueue(new JFXSnackbar.SnackbarEvent("User saved"));
+
+        JFXDialog dialog = new JFXDialog();
+        dialog.setContent(new Label("Content"));
+        StackPane s = new StackPane();
+        pane.getChildren().add(s);
+        dialog.show(s);
     }
 
     private Contact getContactInfo() {
