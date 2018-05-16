@@ -1,3 +1,12 @@
+@font-face {
+    font-family:'Roboto';
+    src: url('fonts/Aller/Aller_Bd.ttf');
+}
+
+.root {
+    -fx-font-family: "Aller";
+}
+
 .button {
     -fx-text-fill: white;
     -fx-background-color: green;
@@ -18,5 +27,6 @@
 .text-field {
     -fx-border-radius: 5px;
     -fx-border-color: white;
+    -fx-font-family: "Roboto";
 }
 
