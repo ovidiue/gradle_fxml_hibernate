@@ -1,10 +1,10 @@
 @font-face {
     font-family:'Roboto';
-    src: url('fonts/Aller/Aller_Bd.ttf');
+    src: url('fonts/Ubuntu/Ubuntu-Regular.ttf');
 }
 
 .root {
-    -fx-font-family: "Aller";
+    -fx-font-family: "Ubuntu";
 }
 
 .button {
