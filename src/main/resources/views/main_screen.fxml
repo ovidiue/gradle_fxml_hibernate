@@ -30,5 +30,6 @@
             <Button mnemonicParsing="false" onAction="#viewAllEntries" text="View all entries" GridPane.rowIndex="2" />
          </children>
       </GridPane>
+      <Button mnemonicParsing="false" onAction="#goToJS" text="Go To JS" />
    </children>
 </AnchorPane>

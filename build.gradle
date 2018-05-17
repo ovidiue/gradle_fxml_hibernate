@@ -22,4 +22,7 @@ dependencies {
     compile 'org.hibernate:hibernate-core:5.1.0.Final'
     compile 'org.apache.derby:derby:10.14.1.0'
     compile 'javax.transaction:jta:1.1'
+    // https://mvnrepository.com/artifact/com.fasterxml/jackson-module-json-org
+    compile 'com.fasterxml:jackson-module-json-org:0.9.1'
+
 }
