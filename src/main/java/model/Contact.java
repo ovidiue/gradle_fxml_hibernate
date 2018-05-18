@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity
 public class Contact {
     @Column
-    String name;
+    private String name;
     @Column
     String surname;
     @Id

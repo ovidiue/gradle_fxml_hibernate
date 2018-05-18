@@ -1,33 +1,40 @@
-document.write("HELLO OVIDIU");
-document.write(contact);
-$("body").append("<input type='text'>");
-var table = $("<table><tbody></tbody></table>");
-getTable(contact);
+function createTableFromArr(arrObj, objKeys = []) {
+    var table = $("<table></table>")
+        .append("<thead></thead>")
+        .append("<tbody></tbody>");
 
-for (var i=0; i<contact.length; i++) {
-    document.write(contact[i].name);
-    document.write(contact[i].surname);
-}
+    if (arrObj && arrObj.length) {
+        if (objKeys && objKeys.length) {
 
-document.write(typeof contact);
-//var table = getTable(contact);
-$('body').append(table);
+            arrObj.forEach(e => {
 
-function getTable(arrContacts) {
+                var tr = $("<tr></tr>");
 
-    if (arrContacts) {
-        arrContacts.forEach(function(e){
-            document.write(e.name);
-            document.write(e.surname);
-            table.find('tbody')
-                .append('<tr>')
-                .append('td');
-          /*  var tr = $("<tr></tr>");
-            tr.append("<td>"+e.name+"</td>");
-            table.append(tr);*/
-        } );
+                for (var key of objKeys) {
+
+                    if (e[key] && e[key] !== null && typeof e[key] !== "undefined") {
+                        tr.append("<td>" + e[key] + "</td>");
+                    }
+
+                }
+
+                table.find('tbody').append(tr);
+            });
+        }
     }
 
     return table;
-
 }
+
+alert($('body'));
+
+//document.write(contact);
+
+//document.write($('body'));
+
+var table = createTableFromArr(contact, ['name', 'surname']);
+
+$("body").append(table);
+document.write(table);
+
+
